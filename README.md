@@ -13,3 +13,10 @@ http://localhost:8080/best-supplier?origin=DEU&destination=BRA&departureDate=201
 
 Worst Supplier
 http://localhost:8080/worse-supplier?departFrom=DEU&arriveTo=BRA&outboundDate=2019-04-04&inboundDate=2019-04-20&numberOfMedicines=3
+
+There were some important things missing like:
+- Implementation of custom exception
+- Standard error handling in case of incorrect URL parameters, and other cases
+- Including log4j to standardize logging
+- Other methods of testing, ensuring coverage close to or greater than 90% of an entire application
+- As BestSupplier and WorseSupllier APIs are in separate applications, already started alone.
