@@ -9,6 +9,7 @@ public class BestSupplierResponse {
 	private String destinationCountryCode;
 	private String departureDate; 
 	private String estimatedArrival; 
+	
 
 	public BestSupplierResponse() {
 		super();
