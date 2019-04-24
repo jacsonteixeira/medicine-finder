@@ -8,6 +8,7 @@ public class BestSupplierRequest {
     private String estimatedArrival;
     private int quantityCount;
     
+    // Added a constructor to make it easier to create new objects BestSupplierRequest
     public BestSupplierRequest(String origin, String destination, String departureDate, String estimatedArrival,
 			int quantityCount) {
 		super();

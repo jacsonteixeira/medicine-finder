@@ -46,7 +46,7 @@ public class MedicineFinderService {
 		return orderByPrice(finalMedFinderResponses);
 	}
 
-	public List<BestSupplierResponse> getBestSupRespFromAPI(MedicineFinderRequest request) {
+	private List<BestSupplierResponse> getBestSupRespFromAPI(MedicineFinderRequest request) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
 		RestTemplate restTemplate = new RestTemplate();
@@ -70,7 +70,7 @@ public class MedicineFinderService {
 		return bestSupResponses;
 	}
 
-	public List<WorseSupplierResponse> getWorseSupRespFromAPI(MedicineFinderRequest request) {
+	private List<WorseSupplierResponse> getWorseSupRespFromAPI(MedicineFinderRequest request) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
 		RestTemplate restTemplate = new RestTemplate();
@@ -94,7 +94,7 @@ public class MedicineFinderService {
 		return worseSupResponses;
 	}
 
-	public List<MedicineFinderResponse> castBestRespToMedResp(List<BestSupplierResponse> bestSupResponses) {
+	private List<MedicineFinderResponse> castBestRespToMedResp(List<BestSupplierResponse> bestSupResponses) {
 		List<MedicineFinderResponse> medResponses = new ArrayList<>();
 		for (BestSupplierResponse bestSupResponse : bestSupResponses) {
 			medResponses.add(new MedicineFinderResponse(SupplierType.BEST_SUPPLIER.getSupplierName(),
@@ -107,7 +107,7 @@ public class MedicineFinderService {
 		return medResponses;
 	}
 
-	public List<MedicineFinderResponse> castWorseSupRespToMedResp(List<WorseSupplierResponse> worseSupResponses) {
+	private List<MedicineFinderResponse> castWorseSupRespToMedResp(List<WorseSupplierResponse> worseSupResponses) {
 		List<MedicineFinderResponse> medResponses = new ArrayList<>();
 		for (WorseSupplierResponse worseSupResponse : worseSupResponses) {
 			medResponses.add(new MedicineFinderResponse(SupplierType.WORSE_SUPPLIER.getSupplierName(),
@@ -123,21 +123,21 @@ public class MedicineFinderService {
 		return medResponses;
 	}
 
-	public double calculateTotalPrice(double basePrice, double discount, double tax) {
+	protected double calculateTotalPrice(double basePrice, double discount, double tax) {
 		double discountAmount = basePrice * discount;
 		double priceAfterDiscount = basePrice - discountAmount;
 		double taxAmount = priceAfterDiscount * tax;
 		return priceAfterDiscount + taxAmount;
-		
+
 	}
 
-	public List<MedicineFinderResponse> combineResponses(List<MedicineFinderResponse> bestResp,
+	protected List<MedicineFinderResponse> combineResponses(List<MedicineFinderResponse> bestResp,
 			List<MedicineFinderResponse> worseResp) {
 		bestResp.addAll(worseResp);
 		return bestResp;
 	}
 
-	public List<MedicineFinderResponse> orderByPrice(List<MedicineFinderResponse> responses) {
+	protected List<MedicineFinderResponse> orderByPrice(List<MedicineFinderResponse> responses) {
 		responses.sort(Comparator.comparing(MedicineFinderResponse::getTotalPrice));
 		return responses;
 	}

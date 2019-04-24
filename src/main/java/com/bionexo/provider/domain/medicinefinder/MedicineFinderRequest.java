@@ -8,6 +8,7 @@ public class MedicineFinderRequest {
     private String estimatedArrival;
     private int numberOfMedicine;
 
+    // Added a constructor to make it easier to create new objects MedicineFinderRequest
     public MedicineFinderRequest(String origin, String destination, String departureDate, String estimatedArrival,
 			int numberOfMedicine) {
 		super();

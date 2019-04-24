@@ -8,6 +8,7 @@ public class WorseSupplierRequest {
     private String inboundDate;
     private int numberOfMedicines;
 
+ 	// Added a constructor to make it easier to create new objects WorseSupplierRequest
     public WorseSupplierRequest(String departFrom, String arriveTo, String outboundDate, String inboundDate,
 			int numberOfMedicines) {
 		super();

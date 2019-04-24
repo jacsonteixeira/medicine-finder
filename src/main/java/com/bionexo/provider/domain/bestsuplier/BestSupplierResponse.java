@@ -14,7 +14,8 @@ public class BestSupplierResponse {
 		super();
 	}
 
-	public BestSupplierResponse(String medicineName, double price, String medicineType, String departureCountryCode,
+	// Added a constructor to make it easier to create new objects BestSupplierResponse
+    public BestSupplierResponse(String medicineName, double price, String medicineType, String departureCountryCode,
 			String destinationCountryCode, String departureDate, String estimatedArrival) {
 		super();
 		this.medicineName = medicineName;
