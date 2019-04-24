@@ -3,7 +3,8 @@ MedicineFinder is a search tool to find medicines which have been bought already
 
 This application is configured with H2 database and some data is entered at application startup through the file located in \src\main\resources\data.sql
 
-Examples of call
+Examples of call:
+
 Medicine Finder
 http://localhost:8080/medicine-finder?origin=DEU&destination=BRA&departureDate=2019-04-04&estimatedArrival=2019-04-20&numberOfMedicine=9
 
