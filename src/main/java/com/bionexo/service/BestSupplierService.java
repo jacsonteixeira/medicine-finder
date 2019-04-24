@@ -20,30 +20,28 @@ public class BestSupplierService {
 	private BestSupplierRepository bestSupplierRepository;
 
 	public List<BestSupplierResponse> findByRequestFields(BestSupplierRequest request) {
-		List<BestSupplierEntity> entityList = bestSupplierRepository.findByRequestFields(request.getOrigin(),
+		List<BestSupplierEntity> entities = bestSupplierRepository.findByRequestFields(request.getOrigin(),
 				request.getDestination(),
 				LocalDate.parse(request.getDepartureDate(), DateTimeFormatter.ISO_LOCAL_DATE).atStartOfDay(),
-				LocalDate.parse(request.getDepartureDate(), DateTimeFormatter.ISO_LOCAL_DATE).atStartOfDay().plusDays(1),
+				LocalDate.parse(request.getDepartureDate(), DateTimeFormatter.ISO_LOCAL_DATE).atStartOfDay()
+						.plusDays(1),
 				LocalDate.parse(request.getEstimatedArrival(), DateTimeFormatter.ISO_LOCAL_DATE).atStartOfDay(),
-				LocalDate.parse(request.getEstimatedArrival(), DateTimeFormatter.ISO_LOCAL_DATE).atStartOfDay().plusDays(1),
+				LocalDate.parse(request.getEstimatedArrival(), DateTimeFormatter.ISO_LOCAL_DATE).atStartOfDay()
+						.plusDays(1),
 				request.getQuantityCount());
-		return castEntityToResponse(entityList);
+		return castEntityToResponse(entities);
 	}
 
-	private List<BestSupplierResponse> castEntityToResponse(List<BestSupplierEntity> entityList) {
-		List<BestSupplierResponse> responseList = new ArrayList<>();
-		for (BestSupplierEntity entity : entityList) {
-			BestSupplierResponse response = new BestSupplierResponse();
-			response.setMedicineName(entity.getMedicineName());
-			response.setPrice(entity.getPrice());
-			response.setMedicineType(entity.getMedicineType().name());
-			response.setDepartureCountryCode(entity.getDepartureCountryCode());
-			response.setDestinationCountryCode(entity.getDestinationCountryCode());
-			response.setDepartureDate(entity.getDepartureDate().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
-			response.setEstimatedArrival(entity.getEstimatedArrival().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
-			responseList.add(response);
+	private List<BestSupplierResponse> castEntityToResponse(List<BestSupplierEntity> entities) {
+		List<BestSupplierResponse> responses = new ArrayList<>();
+		for (BestSupplierEntity entity : entities) {
+			responses.add(new BestSupplierResponse(entity.getMedicineName(), entity.getPrice().doubleValue(),
+					entity.getMedicineType().name(), entity.getDepartureCountryCode(),
+					entity.getDestinationCountryCode(),
+					entity.getDepartureDate().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME),
+					entity.getEstimatedArrival().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)));
 		}
-		return responseList;
+		return responses;
 	}
 
 }

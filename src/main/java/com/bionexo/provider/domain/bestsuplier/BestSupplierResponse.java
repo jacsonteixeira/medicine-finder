@@ -10,6 +10,22 @@ public class BestSupplierResponse {
 	private String departureDate; 
 	private String estimatedArrival; 
 
+	public BestSupplierResponse() {
+		super();
+	}
+
+	public BestSupplierResponse(String medicineName, double price, String medicineType, String departureCountryCode,
+			String destinationCountryCode, String departureDate, String estimatedArrival) {
+		super();
+		this.medicineName = medicineName;
+		this.price = price;
+		this.medicineType = medicineType;
+		this.departureCountryCode = departureCountryCode;
+		this.destinationCountryCode = destinationCountryCode;
+		this.departureDate = departureDate;
+		this.estimatedArrival = estimatedArrival;
+	}
+
 	public String getMedicineName() {
 		return medicineName;
 	}

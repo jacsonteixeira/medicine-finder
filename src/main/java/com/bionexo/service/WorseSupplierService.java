@@ -20,30 +20,25 @@ public class WorseSupplierService {
 	private WorseSupplierRepository worseSupplierRepository;
 
 	public List<WorseSupplierResponse> findByRequestFields(WorseSupplierRequest request) {
-		List<WorseSupplierEntity> entityList = worseSupplierRepository.findByRequestFields(request.getDepartFrom(),
+		List<WorseSupplierEntity> entities = worseSupplierRepository.findByRequestFields(request.getDepartFrom(),
 				request.getArriveTo(),
 				LocalDate.parse(request.getOutboundDate(), DateTimeFormatter.ISO_LOCAL_DATE).atStartOfDay(),
 				LocalDate.parse(request.getOutboundDate(), DateTimeFormatter.ISO_LOCAL_DATE).atStartOfDay().plusDays(1),
 				LocalDate.parse(request.getInboundDate(), DateTimeFormatter.ISO_LOCAL_DATE).atStartOfDay(),
 				LocalDate.parse(request.getInboundDate(), DateTimeFormatter.ISO_LOCAL_DATE).atStartOfDay().plusDays(1),
 				request.getNumberOfMedicines());
-		return castEntityToResponse(entityList);
+		return castEntityToResponse(entities);
 	}
 
-	private List<WorseSupplierResponse> castEntityToResponse(List<WorseSupplierEntity> entityList) {
-		List<WorseSupplierResponse> responseList = new ArrayList<>();
-		for (WorseSupplierEntity entity : entityList) {
-			WorseSupplierResponse response = new WorseSupplierResponse();
-			response.setMedicine(entity.getMedicine());
-			response.setTotalBasePrice(entity.getTotalBasePrice());
-			response.setTax(entity.getTax());
-			response.setDiscount(entity.getDiscount());
-			response.setDepartureCountryName(entity.getDepartureCountryName());
-			response.setArrivalCountryName(entity.getArrivalCountryName());
-			response.setOutboundDateTime(entity.getOutboundDateTime().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
-			response.setInboundDateTime(entity.getInboundDateTime().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
-			responseList.add(response);
+	private List<WorseSupplierResponse> castEntityToResponse(List<WorseSupplierEntity> entities) {
+		List<WorseSupplierResponse> responses = new ArrayList<>();
+		for (WorseSupplierEntity entity : entities) {
+			responses.add(new WorseSupplierResponse(entity.getMedicine(), entity.getTotalBasePrice().doubleValue(),
+					entity.getTax().doubleValue(), entity.getDiscount().doubleValue(), entity.getDepartureCountryName(),
+					entity.getArrivalCountryName(),
+					entity.getOutboundDateTime().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME),
+					entity.getInboundDateTime().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)));
 		}
-		return responseList;
+		return responses;
 	}
 }

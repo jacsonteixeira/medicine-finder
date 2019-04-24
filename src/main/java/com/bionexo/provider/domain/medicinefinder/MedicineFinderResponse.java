@@ -10,6 +10,22 @@ public class MedicineFinderResponse {
 	private String departureDate;
 	private String estimatedArrival;
 
+	public MedicineFinderResponse() {
+		super();
+	}
+
+	public MedicineFinderResponse(String medicineName, String supplier, double totalPrice, String departureCountry,
+			String destinationCountry, String departureDate, String estimatedArrival) {
+		super();
+		this.medicineName = medicineName;
+		this.supplier = supplier;
+		this.totalPrice = totalPrice;
+		this.departureCountry = departureCountry;
+		this.destinationCountry = destinationCountry;
+		this.departureDate = departureDate;
+		this.estimatedArrival = estimatedArrival;
+	}
+
 	public String getMedicineName() {
 		return medicineName;
 	}

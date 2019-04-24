@@ -1,6 +1,7 @@
 package com.bionexo.provider.domain.bestsuplier;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -16,12 +17,12 @@ import com.bionexo.util.enums.MedicineType;
 
 @Entity
 @Table(name = "BESTSUPPLIER")
-public class BestSupplierEntity implements Serializable{
-	
+public class BestSupplierEntity implements Serializable {
+
 	private static final long serialVersionUID = 1543237945949085625L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
 	private Long id;
 
@@ -29,10 +30,10 @@ public class BestSupplierEntity implements Serializable{
 	private String medicineName;
 
 	@Column
-	private Double price;
-	
+	private BigDecimal price;
+
 	@Enumerated(EnumType.STRING)
-    @Column
+	@Column
 	private MedicineType medicineType;
 
 	@Column
@@ -66,11 +67,11 @@ public class BestSupplierEntity implements Serializable{
 		this.medicineName = medicineName;
 	}
 
-	public Double getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(Double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 

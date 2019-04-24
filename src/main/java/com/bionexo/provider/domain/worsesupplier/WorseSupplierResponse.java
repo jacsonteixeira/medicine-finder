@@ -11,6 +11,23 @@ public class WorseSupplierResponse {
 	private String outboundDateTime;
 	private String inboundDateTime;
 
+	public WorseSupplierResponse() {
+		super();
+	}
+
+	public WorseSupplierResponse(String medicine, double totalBasePrice, double tax, double discount,
+			String departureCountryName, String arrivalCountryName, String outboundDateTime, String inboundDateTime) {
+		super();
+		this.medicine = medicine;
+		this.totalBasePrice = totalBasePrice;
+		this.tax = tax;
+		this.discount = discount;
+		this.departureCountryName = departureCountryName;
+		this.arrivalCountryName = arrivalCountryName;
+		this.outboundDateTime = outboundDateTime;
+		this.inboundDateTime = inboundDateTime;
+	}
+
 	public String getMedicine() {
 		return medicine;
 	}

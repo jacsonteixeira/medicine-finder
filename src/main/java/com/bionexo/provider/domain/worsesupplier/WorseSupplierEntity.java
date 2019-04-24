@@ -1,6 +1,7 @@
 package com.bionexo.provider.domain.worsesupplier;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -17,7 +18,7 @@ public class WorseSupplierEntity implements Serializable {
 	private static final long serialVersionUID = -8757210201235185143L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
 	private Long id;
 
@@ -25,13 +26,13 @@ public class WorseSupplierEntity implements Serializable {
 	private String medicine;
 
 	@Column
-	private Long totalBasePrice;
+	private BigDecimal totalBasePrice;
 
 	@Column
-	private Long tax;
+	private BigDecimal tax;
 
 	@Column
-	private Long discount;
+	private BigDecimal discount;
 
 	@Column
 	private String departureCountryName;
@@ -64,27 +65,27 @@ public class WorseSupplierEntity implements Serializable {
 		this.id = id;
 	}
 
-	public Long getTotalBasePrice() {
+	public BigDecimal getTotalBasePrice() {
 		return totalBasePrice;
 	}
 
-	public void setTotalBasePrice(Long totalBasePrice) {
+	public void setTotalBasePrice(BigDecimal totalBasePrice) {
 		this.totalBasePrice = totalBasePrice;
 	}
 
-	public Long getTax() {
+	public BigDecimal getTax() {
 		return tax;
 	}
 
-	public void setTax(Long tax) {
+	public void setTax(BigDecimal tax) {
 		this.tax = tax;
 	}
 
-	public Long getDiscount() {
+	public BigDecimal getDiscount() {
 		return discount;
 	}
 
-	public void setDiscount(Long discount) {
+	public void setDiscount(BigDecimal discount) {
 		this.discount = discount;
 	}
 
