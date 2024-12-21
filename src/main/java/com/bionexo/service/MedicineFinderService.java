@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import com.bionexo.util.enums.SupplierType;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -19,7 +20,7 @@ import com.bionexo.provider.domain.bestsuplier.BestSupplierResponse;
 import com.bionexo.provider.domain.medicinefinder.MedicineFinderRequest;
 import com.bionexo.provider.domain.medicinefinder.MedicineFinderResponse;
 import com.bionexo.provider.domain.worsesupplier.WorseSupplierResponse;
-import com.bionexo.util.enums.SupplierType;
+import com.bionexo.util.enums.MedicineType;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
